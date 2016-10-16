@@ -1,34 +1,25 @@
 <?php
+
 namespace Application\Service;
 
-class Auth
-{
-    private $request;
-    private $adapter;
+use Zend\Authentication\Adapter\DbTable\CredentialTreatmentAdapter as AuthAdapter;
 
-    public function __construct($request, $adapter)
-    {
-        $this->request = $request;
-        $this->adapter = $adapter;
+class Auth implements \Zend\Authentication\Adapter\AdapterInterface {
+
+    private $authAdapter;
+    private $identity;
+    private $credential;
+
+    public function __construct($adapter, $identity, $credential) {
+        $this->authAdapter = new AuthAdapter($adapter, 'users', 'login', 'password');
+        $this->identity = $identity;
+        $this->credential = $credential;
     }
 
-    public function isAuthorized()
-    {
-        if(! $this->request->getHeader('authorization')){
-            throw new \Exception("Sem token", 401);
-        }
-
-        if (!$this->isValid()) {
-            throw new \Exception("Not authorized", 403);
-        }
-
-        return true;
+    public function authenticate() {
+        $this->authAdapter->setCredential($this->credential);
+        $this->authAdapter->setIdentity($this->identity);
+        return $this->authAdapter->authenticate();
     }
 
-    private function isValid()
-    {
-        $token = $this->request->getHeader('authorization');
-        //validar o token de alguma forma...
-        return true;
-    }
 }

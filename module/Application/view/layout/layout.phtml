@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?= $this->headTitle('ZF Skeleton Application')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?= $this->headTitle('Trabalho de Zend 3')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?= $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -38,7 +38,12 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?= $this->url('home') ?>">Home</a></li>
+                        <li class="active">
+                            <a href="<?= $this->url('beer') ?>">Beer</a>
+                        </li>
+                        <li class="">
+                            <a href="<?= $this->url('login',['action'=>'logout']); ?>">Logout</a>
+                        </li>
                     </ul>
                 </div>
             </div>

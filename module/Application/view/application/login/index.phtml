@@ -1,0 +1,38 @@
+
+<h3>Fazer login no ZendBEER</h3>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<div class="row">  
+  <div class="col-md-4">
+	<div class="form_element">
+	    <?php 
+	    	echo $this->formRow($form->get('login')->setAttribute('class', 'form-control')
+                          						   ->setAttribute('placeholder', 'pos'));
+	    ?>
+	</div>
+	<br/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">  	
+	<div class="form_element">
+	    <?php 
+	    	echo $this->formRow($form->get('password')->setAttribute('class', 'form-control')
+                           				  			  ->setAttribute('placeholder', 'alfa')); 
+	    ?>
+	</div>
+	<br/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">  	
+	<?php 
+		echo $this->formElement($form->get('send')->setAttribute('class', 'btn btn-primary btn-block')) 
+	?>
+  </div>
+</div>
+
+<?php echo $this->form()->closeTag() ?>

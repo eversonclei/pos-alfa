@@ -16,9 +16,6 @@ class Beer extends Form
             'options' => [
                 'label' => 'Beer name',
             ],
-            // 'attributes' => [
-            //     'class' => 'form-control'
-            // ],
             'type'  => 'Text',
         ]);
 
